@@ -1,0 +1,14 @@
+<launch>
+    <node pkg="my_fun_pkg" exec="number_publisher" name="My_number_publisher" namespace="/abc">
+            <remap from="number" to="My_number"/>
+            <!-- <param name="number" value="5" />
+            <param name="timer" value="1.5" /> -->
+            <param from="$(find-pkg-share my_robot_bringup)/config/number_app.yaml"/>
+    </node>
+    <node pkg="fun2_pkg" exec="number_counter" name="My_number_counter" namespace="/abc">
+            <remap from="number" to="My_number"/>
+            <remap from="number_count" to="My_number_count"/>
+    </node>
+
+</launch>
+

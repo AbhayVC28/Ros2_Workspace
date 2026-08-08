@@ -1,0 +1,20 @@
+/robot_news_station_glskard:
+  ros__parameters:
+    name: Harry_Potter
+
+/robot_news_station_bb8:
+  ros__parameters:
+    name: Hemione_Granger
+
+/robot_news_station_daneel:
+  ros__parameters:
+    name: Ron_wesley
+
+/robot_news_station_jander:
+  ros__parameters:
+    name: Nevelle
+
+/robot_news_station_c3po:
+  ros__parameters:
+    name: Luna
+

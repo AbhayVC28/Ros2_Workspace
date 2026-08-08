@@ -1,0 +1,2 @@
+bool status
+string comment
