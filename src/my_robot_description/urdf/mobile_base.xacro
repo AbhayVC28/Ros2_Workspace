@@ -24,6 +24,14 @@
             <origin xyz="0 0 ${base_height/2.0}" rpy="0 0 0" />
             <material name="green"/>
         </visual>
+
+        <collision>
+            <geometry>
+                <box size="${base_length} ${base_width} ${base_height}" />
+            </geometry>
+            <origin xyz="0 0 ${base_height/2.0}" rpy="0 0 0" />
+        </collision>
+
         <xacro:box_inertia m="5.0" x="${base_length}" y="${base_width}" z="${base_height}" o_xyz="0 0 ${base_height/2.0}" o_rpy="0 0 0" />
     </link>
 
@@ -35,6 +43,15 @@
             <origin xyz="0 0 ${base_height/2.0}" rpy="0 0 0" />
             <material name="grey"/>
         </visual>
+
+        <collision>
+            <geometry>
+                <cylinder radius="${sholder_radius}" length="${sholder_length}"/>
+            </geometry>
+            <origin xyz="0 0 ${base_height/2.0}" rpy="0 0 0" />
+        </collision>
+
+        <xacro:cylinderical_inertia m="0.6545" r="${sholder_radius}" l="${sholder_length}" o_xyz="0 0 ${base_height/2.0}" o_rpy="0 0 0" />
     </link>
 
 
@@ -46,7 +63,18 @@
             <origin xyz="0 ${claw_width/2.0} ${claw_height/2.0}" rpy="0 0 0" />
             <material name="blue"/>
         </visual>
+
+        <collision>
+            <geometry>
+                <box size="${claw_length} ${claw_width} ${claw_height}"/>
+            </geometry>
+            <origin xyz="0 ${claw_width/2.0} ${claw_height/2.0}" rpy="0 0 0" />
+        </collision>
+
+        <xacro:box_inertia m="0.02604" x="${claw_length}" y="${claw_width}" z="${claw_height}" o_xyz=" 0 ${claw_width/2.0} ${claw_height/2.0}" o_rpy="0 0 0" />
     </link>
+
+
     <link name="forth_link">
         <visual>
             <geometry>
@@ -55,6 +83,15 @@
             <origin xyz="0 ${-claw_width/2.0} ${claw_height/2.0}" rpy="0 0 0" />
             <material name="blue"/>
         </visual>
+
+        <collision>
+            <geometry>
+                <box size="${claw_length} ${claw_width} ${claw_height}"/>
+            </geometry>
+            <origin xyz="0 ${-claw_width/2.0} ${claw_height/2.0}" rpy="0 0 0" />
+        </collision>
+
+        <xacro:box_inertia m="0.02604" x="${claw_length}" y="${claw_width}" z="${claw_height}" o_xyz="0 ${-claw_width/2.0} ${claw_height/2.0}" o_rpy="0 0 0" />
     </link>
 
     <!-- <link name="right_front_wheel">
@@ -86,6 +123,15 @@
                 <origin xyz="0 ${y*wheel_length/2.0} 0" rpy="${pi/2.0} 0 0" />
                 <material name="blue"/>
             </visual>
+
+            <collision>
+                <geometry>
+                    <sphere radius="${wheel_radius}" />
+                </geometry>
+                <origin xyz="0 ${y*wheel_length/2.0} 0" rpy="0 0 0" />
+            </collision>
+
+            <xacro:cylinderical_inertia m="1" r="${wheel_radius}" l="${wheel_length}" o_xyz="0 ${y*wheel_length/2.0} 0" o_rpy="${pi/2.0} 0 0" />
         </link>
     </xacro:macro>
 
@@ -120,6 +166,15 @@
             <origin xyz="0 0 0" rpy="0 0 0" />
             <material name="blue"/>
         </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="${caster_wheel_radius}"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
+
+        <xacro:spherical_inertia m="0.5" r="${caster_wheel_radius}" o_xyz="0 0 0" o_rpy="0 0 0"/>
     </link>
 
     <link name="base_footprint">
@@ -190,7 +245,6 @@
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint" />
         <child link="base_link" />
-        <origin xyz="0 0 0.1" rpy="0 0 0"/>
+        <origin xyz="0 0 ${wheel_radius}" rpy="0 0 0"/>
     </joint>
-
 </robot>
