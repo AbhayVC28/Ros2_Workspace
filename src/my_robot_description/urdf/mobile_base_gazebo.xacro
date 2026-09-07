@@ -19,6 +19,8 @@
                 name="gz::sim::systems::JointStatePublisher">
                 <joint_name>Base_left_r_wheel</joint_name>
                 <joint_name>Base_right_r_wheel</joint_name>
+                <joint_name>base_forearm_link</joint_name>
+                <joint_name>hand_forearm_joint</joint_name>
         </plugin>
     </gazebo>
 
